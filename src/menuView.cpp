@@ -1,9 +1,10 @@
 #include <iostream>
+#include "menuView.h"
 
 using namespace std;
 
 // Prosedur: Menampilkan menu utama aplikasi
-void tampilkanMenu() {
+void menuView() {
     cout << "\n--- Aplikasi Inventaris Barang ---" << endl;
     cout << "1. Tambah Barang" << endl;
     cout << "2. Tampilkan Semua Barang" << endl;

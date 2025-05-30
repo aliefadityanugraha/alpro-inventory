@@ -1,27 +1,19 @@
-#include "header.h"
 #include <iostream>
-#include <iomanip>
+#include "searchItems.h"
 
 using namespace std;
 
+int sequentialSearchBarang(Barang* daftarBarang, int jumlahBarang) {
+    string keyword;
+    cout << "Masukkan keyword yang akan dicari (kode atau nama barang): ";
+    getline(cin >> ws, keyword); // ws untuk mengabaikan whitespace sisa input sebelumnya
 
-// Fungsi: Mencari barang berdasarkan kode dan mengembalikan indeksnya
-int cariBarangByKode(int kode) {
     for (int i = 0; i < jumlahBarang; ++i) {
-        if (daftarBarang[i].kodeBarang == kode) {
-            return i; // Mengembalikan indeks jika ditemukan
+        string kode = daftarBarang[i].kodeBarang;
+        string nama = daftarBarang[i].namaBarang;
+        if (kode == keyword || nama == keyword) {
+            return i;
         }
     }
-    return -1; // Tidak ditemukan
-}
-
-// Fungsi: Mencari barang berdasarkan nama dan mengembalikan indeksnya
-int cariBarangByNama(const char* nama) {
-    for (int i = 0; i < jumlahBarang; ++i) {
-        // Menggunakan strcmp untuk membandingkan string char array
-        if (strcmp(daftarBarang[i].namaBarang, nama) == 0) {
-            return i; // Mengembalikan indeks jika ditemukan
-        }
-    }
-    return -1; // Tidak ditemukan
+    return -1;
 }
