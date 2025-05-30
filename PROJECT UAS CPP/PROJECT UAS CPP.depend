@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1747885728 source:e:\project app\project smt 2 cpp\project uas cpp\main.cpp
+	<iostream>
+	<iomanip>
+	<limits>
+	<cstring>
+
