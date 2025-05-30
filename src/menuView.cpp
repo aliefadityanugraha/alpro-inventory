@@ -3,7 +3,6 @@
 
 using namespace std;
 
-// Prosedur: Menampilkan menu utama aplikasi
 void menuView() {
     cout << "\n--- Aplikasi Inventaris Barang ---" << endl;
     cout << "1. Tambah Barang" << endl;

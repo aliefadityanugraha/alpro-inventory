@@ -2,4 +2,7 @@
 #include "Barang.h"
 #include <string>
 
-int sequentialSearchBarang(Barang* daftarBarang, int jumlahBarang);
+using namespace std;
+
+int sequentialSearchBarang(Barang* daftarBarang, int jumlahBarang, string keyword);
+void cariBarang(Barang* daftarBarang, int jumlahBarang);

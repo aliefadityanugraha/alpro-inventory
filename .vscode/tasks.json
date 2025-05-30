@@ -12,6 +12,9 @@
                 "getAllItems.cpp",
                 "menuView.cpp",
                 "searchItems.cpp",
+                "editItems.cpp",
+                "deleteItems.cpp",
+                "shortingItems.cpp",
                 "-o",
                 "${fileDirname}\\inventaris.exe"
             ],

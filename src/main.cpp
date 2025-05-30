@@ -6,20 +6,22 @@ using namespace std;
 #include "addItems.h"
 #include "getAllItems.h"
 #include "searchItems.h"
+#include "editItems.h"
+#include "deleteItems.h"
+#include "shortingItems.h"
 
 int kapasitasBarang = 5;
 Barang* daftarBarang = new Barang[kapasitasBarang];
 int jumlahBarang = 0;
 
-
 int main() {
-    int choiceMenu;
+    int pilihanMenu;
 
     do {
         menuView();
-        cin >> choiceMenu;
+        cin >> pilihanMenu;
 
-        switch (choiceMenu) {
+        switch (pilihanMenu) {
             case 1:
                 tambahBarang(jumlahBarang, daftarBarang, kapasitasBarang);
                 break;
@@ -27,18 +29,26 @@ int main() {
                 tampilkanSemuaBarang(jumlahBarang, daftarBarang);
                 break;
             case 3:
-                sequentialSearchBarang(daftarBarang, jumlahBarang);
+                cariBarang(daftarBarang, jumlahBarang);
                 break;
-            // Tambahkan case lainnya nanti
+            case 4:
+                editBarang(jumlahBarang, daftarBarang);
+                break;
+            case 5:
+                hapusBarang(jumlahBarang, daftarBarang);
+                break;
+            case 6:
+                tampilkanBarangTerurut(jumlahBarang, daftarBarang);
+                break;
             case 0:
-                cout << "Terima kasih telah menggunakan aplikasi inventaris!" << endl;
+                cout << "Terima kasih telah menggunakan aplikasi inventaris" << endl;
                 break;
             default:
                 cout << "Inputan tidak valid. Silakan coba lagi." << endl;
         }
-    } while (choiceMenu != 0);
+    } while (pilihanMenu != 0);
 
-    delete[] daftarBarang; // Dealokasi memori
+    delete[] daftarBarang;
 
     return 0;
 }
