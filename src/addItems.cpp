@@ -1,39 +1,35 @@
 #include <iostream>
-#include "header.h"
+#include "addItems.h"
 
 using namespace std;
 
-// Prosedur: Menambah barang baru ke inventaris
-void tambahBarang() {
-    if (jumlahBarang >= kapasitasMaks) {
-        // Re-alokasi memori (dynamic array resizing)
-        int newKapasitas = kapasitasMaks * 2;
-        //membuat varibale baru bernama temp berdasarkan struct Barang yang ukuranya sama dengan new Barang[newKapasitas]
-        Barang* temp = new Barang[newKapasitas];
-        for (int i = 0; i < jumlahBarang; ++i) {
+void tambahBarang(int& jumlahBarang, Barang*& daftarBarang, int& kapasitasBarang) {
+    if (jumlahBarang == kapasitasBarang) {
+        int kapasitasBaru = kapasitasBarang * 2;
+        Barang* temp = new Barang[kapasitasBaru];
+        for (int i = 0; i < jumlahBarang; i++) {
             temp[i] = daftarBarang[i];
         }
-        delete[] daftarBarang; // Bebaskan memori lama
+        delete[] daftarBarang;
         daftarBarang = temp;
-        kapasitasMaks = newKapasitas;
-        cout << "Kapasitas inventaris diperbesar menjadi " << kapasitasMaks << " barang." << endl;
+        kapasitasBarang = kapasitasBaru;
     }
 
-    cout << "\n--- Tambah Barang ---" << endl;
-    cout << "Kode Barang: ";
-    cin >> daftarBarang[jumlahBarang].kodeBarang;
-    clearInputBuffer(); // Membersihkan buffer setelah input int
-    
-    cout << "Nama Barang: ";
-    cin.getline(daftarBarang[jumlahBarang].namaBarang, 50);
-    
-    cout << "Jumlah Stok: ";
-    cin >> daftarBarang[jumlahBarang].jumlahStok;
-    
-    cout << "Harga Satuan: ";
-    cin >> daftarBarang[jumlahBarang].hargaSatuan;
-    clearInputBuffer(); // Membersihkan buffer setelah input double
+    Barang barangBaru;
+    cout << "Masukkan kode barang: ";
+    cin >> barangBaru.kodeBarang;
+    cin.ignore();
 
-    jumlahBarang++;
+    cout << "Masukkan nama barang: ";
+    cin.getline(barangBaru.namaBarang, 50);
+
+    cout << "Masukkan jumlah stok: ";
+    cin >> barangBaru.jumlahStok;
+
+    cout << "Masukkan harga satuan: ";
+    cin >> barangBaru.hargaSatuan;
+
+    daftarBarang[jumlahBarang++] = barangBaru;
+
     cout << "Barang berhasil ditambahkan!" << endl;
 }

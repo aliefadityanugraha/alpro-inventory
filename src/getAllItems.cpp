@@ -1,48 +1,32 @@
-#include "header.h"
-#include <iomanip>
 #include <iostream>
+#include <iomanip>
+#include "getAllItems.h"
 
 using namespace std;
 
-// Prosedur: Menampilkan semua barang dalam format tabel
-void tampilkanSemuaBarang() {
+void tampilkanSemuaBarang(int jumlahBarang, Barang* daftarBarang) {
     if (jumlahBarang == 0) {
-        cout << "Inventaris kosong." << endl;
+        cout << "Belum ada barang yang terdaftar." << endl;
         return;
     }
 
-    cout << "\n--- Daftar Semua Barang ---" << endl;
-
-    // Menentukan lebar kolom
-    const int width_kode = 8;
-    const int width_nama = 35; // Cukup lebar untuk nama barang
-    const int width_stok = 8;
-    const int width_harga = 15;
-
-    // Header tabel
-    cout << left // Rata kiri untuk header
-              << setw(width_kode) << "KODE"
-              << setw(width_nama) << "NAMA BARANG"
-              << setw(width_stok) << "STOK"
-              << right
-              << setw(width_harga) << "HARGA SATUAN"
-              << endl;
-    
-    // Garis pemisah header dan data
-    cout << setfill('-') << setw(width_kode + width_nama + width_stok + width_harga) << "" << endl;
-    cout << setfill(' '); // Kembalikan fill character ke spasi
-
+    cout << "\nDaftar Semua Barang:\n";
+    cout << setfill('-') << setw(79) << "-" << setfill(' ') << endl;
+    cout << left
+         << setw(4)  << "No"
+         << setw(18) << "Kode Barang"
+         << setw(30) << "Nama Barang"
+         << setw(8)  << "Stok"
+         << setw(15) << "Harga Satuan" << endl;
+    cout << setfill('-') << setw(79) << "-" << setfill(' ') << endl;
     for (int i = 0; i < jumlahBarang; ++i) {
-        cout << left // Rata kiri untuk kode, nama, stok
-                  << setw(width_kode) << daftarBarang[i].kodeBarang
-                  << setw(width_nama) << daftarBarang[i].namaBarang
-                  << setw(width_stok) << daftarBarang[i].jumlahStok
-                  << right
-                  << fixed << setprecision(2) // Format harga dengan 2 desimal
-                  << setw(width_harga) << daftarBarang[i].hargaSatuan
-                  << endl;
+        cout << left
+             << setw(4)  << (i + 1)
+             << setw(18) << daftarBarang[i].kodeBarang
+             << setw(30) << daftarBarang[i].namaBarang
+             << setw(8)  << daftarBarang[i].jumlahStok
+             << setw(15) << daftarBarang[i].hargaSatuan
+             << endl;
     }
-    // Garis penutup tabel
-    cout << setfill('-') << setw(width_kode + width_nama + width_stok + width_harga) << "" << endl;
-    cout << setfill(' ');
+    cout << setfill('-') << setw(79) << "-" << setfill(' ') << endl;
 }
